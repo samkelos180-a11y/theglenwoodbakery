@@ -1,50 +1,77 @@
-<main>
-    <header>
-    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Glenwood Bakery - Contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
     <h1>The Glenwood Bakery</h1>
-    
     <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="menu.html">Menu</a>
         <a href="gallery.html">Gallery</a>
-        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="active">Contact</a>
     </nav>
 </header>
 
+<main>
     <h2>Contact Us</h2>
 
-    <!-- Contact Info -->
-    <section>
-        <p>Email: info@glenwoodbakery.co.za</p>
-        <p>Phone: 031 123 4567</p>
-    </section>
+    <!-- Contact Info Cards -->
+    <div class="contact-info">
+        <div class="info-card">
+            <h3>📍 Address</h3>
+            <p>396/398 Esther Roberts Road<br>Glenwood, Durban</p>
+        </div>
+        <div class="info-card">
+            <h3>📞 Phone</h3>
+            <p>031 123 4567</p>
+        </div>
+        <div class="info-card">
+            <h3>✉️ Email</h3>
+            <p>info@glenwoodbakery.co.za</p>
+        </div>
+        <div class="info-card">
+            <h3>🕒 Hours</h3>
+            <p>Mon-Fri: 6am-3pm<br>Sat-Sun: 6am-2pm</p>
+        </div>
+    </div>
 
     <!-- Contact Form -->
-    <section>
-        <form>
-            <label>Name:</label><br>
-            <input type="text"><br><br>
+    <form class="contact-form" id="contactForm">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
 
-            <label>Email:</label><br>
-            <input type="email"><br><br>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
 
-            <label>Message:</label><br>
-            <textarea></textarea><br><br>
+        <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
 
-            <button type="submit">Send</button>
-        </form>
-    </section>
-
+        <button type="submit" class="btn-submit">Send Message</button>
+    </form>
 </main>
+
 <footer>
-    <p>396/398 Esther Roberts Road
-Glenwood, Durban</p>
-    <p>Open 7 days  a week</p>
-     <p>Monday-Friday 6am-3pm</p>
-     <p>Sat, Sunday and public holidays </p>
-    <p>6am-2pm</p>
-    <p>&copy; 2026 Glenwood Bakery</p>
+    <p>396/398 Esther Roberts Road, Glenwood, Durban</p>
+    <p>Open 7 days a week</p>
+    <p>Monday-Friday: 6am - 3pm</p>
+    <p>Saturday, Sunday & Public Holidays: 6am - 2pm</p>
+    <p>&copy; 2026 The Glenwood Bakery. All rights reserved.</p>
 </footer>
 
+<script src="js/script.js"></script>
 </body>
+</html>

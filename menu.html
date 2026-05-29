@@ -1,241 +1,379 @@
-<main>
-
-    <h2>MENU</h2>
-    <header>
+<!DOCTYPE html>
+<!-- ============================================================
+     FILE: menu.html (Menu Page)
+     AUTHOR: Samkelo Xaba
+     STUDENT #: ST10537795
+     PURPOSE: Display bakery menu - Croissants, Drinks, and Cakes
+     CSS TYPES: External + Internal + Inline
+     SECTIONS INCLUDED: Croissants & Pastries, Drinks, Cakes & Biscuits
+     SECTIONS REMOVED: All Day Breakfast, Lunch from 11am (as requested)
+     ============================================================ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Glenwood Bakery Menu - Croissants, Pastries, Drinks, and Cakes">
+    <title>The Glenwood Bakery - Menu</title>
     
-    <h1>The Glenwood Bakery</h1>
+    <!-- ======================================================= -->
+    <!-- EXTERNAL CSS: Main stylesheet for all global styling -->
+    <!-- ======================================================= -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- ======================================================= -->
+    <!-- INTERNAL CSS: Menu page specific grid styles -->
+    <!-- ======================================================= -->
+    <style>
+        .menu-category {
+            margin: 3rem 0;
+        }
+        
+        .menu-category h3 {
+            background-color: #6B3E26;
+            color: #FFF5E1;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .menu-item-card {
+            background-color: #FFF5E1;
+            border: 1px solid #F3E5AB;
+            border-radius: 15px;
+            padding: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .menu-item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .menu-item-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .menu-item-card h4 {
+            margin: 0.5rem 0;
+            color: #6B3E26;
+        }
+        
+        .menu-item-card p {
+            margin: 0.3rem 0;
+        }
+        
+        .price {
+            color: #C68E4A;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .description {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER SECTION WITH LOGO
+     ============================================================ -->
+<header>
+    <!-- INLINE CSS: Logo container styling -->
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+        <img src="images/logo.png" alt="Glenwood Bakery Logo" style="height: 60px; width: auto; border-radius: 50%; border: 2px solid #F8C8DC;">
+        <h1 style="margin: 0; flex: 1; text-align: center;">The Glenwood Bakery</h1>
+        <div style="width: 60px;"></div>
+    </div>
     
     <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="menu.html">Menu</a>
+        <a href="menu.html" class="active">Menu</a>
         <a href="gallery.html">Gallery</a>
         <a href="contact.html">Contact</a>
     </nav>
 </header>
 
-    <!-- Category 1 -->
-    <section>
-        <h3>ALL DAY BREAKFAST</h3>
-
-        <div>
-            <p>ALL BREAD BASED ITEMS ARE AVAILABLE ON GLUTEN FREE BREAD</p>
-            <!-- Category 1 -->
-    <section>
-        <h3>ALL DAY BREAKFAST</h3>
-
-        <div>
-            <p>ALL BREAD BASED ITEMS ARE AVAILABLE ON GLUTEN FREE BREAD</p>
-            <p>Oat porridge with cream: R46</p>
-            <img src=c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\congerdesign-porridge-7951848_1920.jpg width="120">
-        </div>
-
-        <div>
-            <p>Granola and yoghurt: R79</p>
-            <img src=c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\tookapic-breakfast-932956_1920.jpg width="120">
-        </div>
-
-        <div>
-            <p>Avocado on toast (guacamole with tomato salsa on toast): R68</p>
-            <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\elle_kh-avocado-toast-3856950_1920.jpg" width="120">
-        </div>
-
-        <div>
-            <p>The Egg (coppa ham and roast tomatoes): R68</p>
-             <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\ritae-loaf-4373363_1920.jpg" width="120">
-       </div>
-
-        <div>
-            <p>Dippy eggs (Two, three minute boiled eggs with marmite soldiers): R46</p>
-             <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\stevepb-breakfast-456351_1920.jpg" width="120">
-       </div>
-
-       <div>
-            <p>Slow cooked eggs (Two slowed cooked eggs and marmite on toast): R46</p>
-             <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\pexels-beans-1834984_1920.jpg" width="120" >
-       </div>
-
-       <div>
-            <p>Chicken livers peri peri with toast: R61</p>
-             <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\angelorosa-meal-2069008_1920.jpg" width="120" >
-       </div>
-       <div>
-            <p>Button mushrooms ( Sautéed mushrooms and a poached egg on toast): R68</p>
-             <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\romjanaly-food-5981255_1920.jpg" width="120" >
-       </div>
-       <div>
-            <p>Curried beans on toast with poached egg: R63</p>
-             <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\pexels-beans-1834984_1920.jpg" width="120" >
-       </div>
-       <div>
-            <p>Breakfast bagel (smoked salmon, caper cream cheese schmear, rocket and fried egg): R116</p>
-             <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\catceeq-bagel-8694162_1920.jpg" width="120" >
-       </div>
+<main>
+    <h2>Our Menu</h2>
+    <!-- INLINE CSS: Menu description -->
+    <p style="text-align: center; margin-bottom: 2rem;">Freshly baked daily using traditional French techniques</p>
     
-       <div>
-            <p>Eggs Royale (Two poached eggs, smoked trout and Hollandaise): R121</p>
-             <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-27 at 22.36.03 (1).jpeg" width="120" >
-       </div>
-       <div>
-            <p>Bakery English Breakfast (two eggs, curried beans, crisp pancetta, mushrooms, roast tomatoes, English pork sausage and toast) (replace pork with halaal lamb sausages +R19): R152</p>
-             <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-27 at 22.36.03.jpeg" width="120" >
-       </div>
-        </div> 
-    </section>
-
-    <!-- Category 2 -->
-    <section>
-        <h3>Lunch from 11 am</h3>
-
-        <div>
-          <p>Olives R35</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 22.02.19 (1).jpeg"width="120">
-          <p>Almonds roast, salted: R46</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 22.02.18.jpeg" width="120">
-          <p>Soup of the day and Toast: R69</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 22.02.20.jpeg" width="120">
-          <p>Quiche of the day with salad : R72</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 22.02.20 (2).jpeg" width="120">
-          <p>Bakery hamburger - House made beef patty, roasted tomatoes, onion marmalade, aioli and butter lettuce on a sourdough bun: R126</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 22.02.21.jpeg" width="120">
-          <p>Bakery more burger (the bakery burger with avocado, crisp pancetta and cheese): R155</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 22.02.20 (1).jpeg" width="120">
-          <p>Quesadilla (Toasted tortilla with aubergines, gouda and pesto): R79</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 22.02.19.jpeg" width="120">
-          <p>Middle eastern flatbread (Slow roast lamb, roasted tomatoes, hummus, tzatziki, rocket in a wrap): R158</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 22.02.19 (3).jpeg" width="120">
-        </div>     
-
-    
- <!-- Category 3 -->
-    <section>
-        <h3>Lunch from 11 am</h3>
-
-        <div>
-          <p>Olives R35</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 22.02.19 (1).jpeg"width="120">
-          <p>Almonds roast, salted: R46</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 22.02.18.jpeg" width="120">
-          <p>Soup of the day and Toast: R69</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 22.02.20.jpeg" width="120">
-          <p>Quiche of the day with salad : R72</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 22.02.20 (2).jpeg" width="120">
-          <p>Bakery hamburger - House made beef patty, roasted tomatoes, onion marmalade, aioli and butter lettuce on a sourdough bun: R126</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 22.02.21.jpeg" width="120">
-          <p>Bakery more burger (the bakery burger with avocado, crisp pancetta and cheese): R155</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 22.02.20 (1).jpeg" width="120">
-          <p>Quesadilla (Toasted tortilla with aubergines, gouda and pesto): R79</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 22.02.19.jpeg" width="120">
-          <p>Middle eastern flatbread (Slow roast lamb, roasted tomatoes, hummus, tzatziki, rocket in a wrap): R158</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 22.02.19 (3).jpeg" width="120">
+    <!-- ============================================================
+         CATEGORY 1: CROISSANTS & PASTRIES (ADDED)
+         ============================================================ -->
+    <div class="menu-category">
+        <h3>🥐 Croissants & Pastries</h3>
+        <div class="menu-grid">
+            <div class="menu-item-card">
+                <img src="images/croissant.jpg" alt="Butter Croissant">
+                <h4>Croissant</h4>
+                <p class="description">Classic French butter croissant, flaky and golden</p>
+                <p class="price">R27</p>
+            </div>
             
+            <div class="menu-item-card">
+                <img src="images/cheese-croissant.jpg" alt="Cheese Croissant">
+                <h4>Cheese Croissant</h4>
+                <p class="description">Stuffed with melted gouda and herbs</p>
+                <p class="price">R36</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/almond-croissant.jpg" alt="Almond Croissant">
+                <h4>Almond Croissant</h4>
+                <p class="description">Filled with almond cream and topped with sliced almonds</p>
+                <p class="price">R34</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/pain-raisin.jpg" alt="Pain au Raisin">
+                <h4>Pain au Raisin</h4>
+                <p class="description">Swirled pastry with raisins and vanilla custard</p>
+                <p class="price">R22</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/pain-chocolat.jpg" alt="Pain au Chocolat">
+                <h4>Pain au Chocolat</h4>
+                <p class="description">Dark chocolate filled pastry</p>
+                <p class="price">R32</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/mini-pastry.jpg" alt="Mini Pastry">
+                <h4>Mini Pastry</h4>
+                <p class="description">Assorted mini Danish pastries (apple, cheese, or berry)</p>
+                <p class="price">R17</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/doughnut.jpg" alt="Doughnut">
+                <h4>Doughnut</h4>
+                <p class="description">Fresh yeast doughnut with cinnamon sugar glaze</p>
+                <p class="price">R14</p>
+            </div>
+            
+            <!-- INLINE CSS: Chef's special highlight -->
+            <div class="menu-item-card" style="border: 2px solid #F8C8DC;">
+                <img src="images/pan-au-chocolat.jpg" alt="Double Chocolate Pain au Chocolat">
+                <h4>⭐ Double Chocolate Pain au Chocolat ⭐</h4>
+                <p class="description">Two types of dark chocolate in a flaky pastry</p>
+                <p class="price">R38</p>
+            </div>
         </div>
+    </div>
     
-    <!-- Category 4 -->
-    <section>
-       <h3>Drinks</h3>
-       <!--Category 4-->
-    </section>
-       <h3>Drinks</h3>
-    <div>
-       <p>Esspresso: R23 (Double shot R28)</p>
-        <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 20.03.12.jpeg" width="120">
-        <p>Cappuccino: R34(Double shot R39, Large R44)</p>
-         <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 20.03.12 (1).jpeg" width="120">
-        <p>Americano: R30 (Double shot R32)</p>
-         <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 20.03.12 (2).jpeg" width="120">
-          <p>Latte: R38</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 20.03.12 (3).jpeg" width="120">
-          <p>Cortado: R32 (Double shot R36)</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 20.03.13.jpeg" width="120">
-          <p>Macchiato: R32 (Double shot R36)</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 20.03.13 (1).jpeg" width="120">
-          <p>Flat White: R39</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 20.03.14.jpeg" width="120">
-          <p>Iced Coffe: R44</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 20.51.36.jpeg" width="120">
-          <p>Hot Chocolate: R48</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 20.03.14 (3).jpeg" width="120">
-          <p>Rooibos Cappuccino: R32 (Large R42)</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 20.03.15.jpeg" width="120">
-          <p>Five Roses: R19</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 20.03.15 (2).jpeg" width="120">
-          <p>Orange Juice: R44</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 20.03.16 (3).jpeg" width="120">
-          <p>Apple Juice: R44</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 20.03.17.jpeg" width="120">
-          <p>Iced Tea: R36</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 20.03.17 (2).jpeg" width="120">
-          <p>Milkshakes: R61</p>
-          <img src="c:\Users\samke\OneDrive\Desktop\theglenwoodbakery\images\WhatsApp Image 2026-04-28 at 20.03.18 (1).jpeg" width="120">
-    </di>
-    </section>
-     <!--Category 5-->
-    <section>
-      <h4>Cakes and Biscuits</h4>
-    <div>
-    <!-- Product List -->
-    <ul>
-        <p>Chocolate Chip Biscuits: R9</p>
-        <img src="">
-        <p>Oat and Macadamia Biscuits: R8</p>
-         <img src="">
-        <p>Financiers: R10</p>
-         <img src="">
-        <p>Chocolate Brownies: R11</p>
-         <img src="">
-        <p>Profiteroles: R14</p>
-         <img src="">
-        <p>Meringue: R4</p>
-         <img src="">
-        <p>Ginger Cake: R39</p>
-         <img src="">
-       <p>Almond Cakes (All Variations)</p>
-        <img src="">
-       <p>Almond Cakes (All Variations): R50</p>
-        <img src="">
-       <p>Banana Bread Slice: R14</p>
-        <img src="">
-       <p>Cheese Cake: R47</p>
-        <img src="">
-       <p>Fruit Cake(Contains alcohol): R44</p>
-        <img src=""> 
-        <section>
-    <!-- Category 6-->
-     <section>
-    <h3>Croissants</h3>
-    <div>
-    <!-- Product List -->
-    <ul>
-       <p>Croissant: R27</p>
-         <img src="">
-       <p>Cheese Croissant: R36</p>
-         <img src="">
-       <p>Almond Croissant: R34</p>
-         <img src="">
-       <p>Pain au Raisin: R22</p>
-         <img src="">
-       <p>Pain au Chocolat: R32</p>
-         <img src="">
-        <p>Danish Lemon Curd: R27</p>
-         <img src="">
-       <p>Mini Pastry: R17</p>
-         <img src="">
-      <p>Doughnut: R14</p>
-         <img src="">
+    <!-- ============================================================
+         CATEGORY 2: DRINKS (KEPT)
+         ============================================================ -->
+    <div class="menu-category">
+        <h3>☕ Drinks</h3>
+        <div class="menu-grid">
+            <div class="menu-item-card">
+                <img src="images/espresso.jpg" alt="Espresso">
+                <h4>Espresso</h4>
+                <p class="price">R23 (Double shot R28)</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/cappuccino.jpg" alt="Cappuccino">
+                <h4>Cappuccino</h4>
+                <p class="price">R34 (Double shot R39, Large R44)</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/americano.jpg" alt="Americano">
+                <h4>Americano</h4>
+                <p class="price">R30 (Double shot R32)</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/latte.jpg" alt="Latte">
+                <h4>Latte</h4>
+                <p class="price">R38</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/cortado.jpg" alt="Cortado">
+                <h4>Cortado</h4>
+                <p class="price">R32 (Double shot R36)</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/macchiato.jpg" alt="Macchiato">
+                <h4>Macchiato</h4>
+                <p class="price">R32 (Double shot R36)</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/flat-white.jpg" alt="Flat White">
+                <h4>Flat White</h4>
+                <p class="price">R39</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/iced-coffee.jpg" alt="Iced Coffee">
+                <h4>Iced Coffee</h4>
+                <p class="price">R44</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/hot-chocolate.jpg" alt="Hot Chocolate">
+                <h4>Hot Chocolate</h4>
+                <p class="price">R48</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/rooibos-cappuccino.jpg" alt="Rooibos Cappuccino">
+                <h4>Rooibos Cappuccino</h4>
+                <p class="price">R32 (Large R42)</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/five-roses.jpg" alt="Five Roses Tea">
+                <h4>Five Roses Tea</h4>
+                <p class="price">R19</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/orange-juice.jpg" alt="Orange Juice">
+                <h4>Orange Juice</h4>
+                <p class="price">R44</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/apple-juice.jpg" alt="Apple Juice">
+                <h4>Apple Juice</h4>
+                <p class="price">R44</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/iced-tea.jpg" alt="Iced Tea">
+                <h4>Iced Tea</h4>
+                <p class="price">R36</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/milkshake.jpg" alt="Milkshake">
+                <h4>Milkshakes</h4>
+                <p class="description">Chocolate, strawberry, or vanilla</p>
+                <p class="price">R61</p>
+            </div>
+        </div>
+    </div>
     
-    </ul>
-
-    </ul>
+    <!-- ============================================================
+         CATEGORY 3: CAKES & BISCUITS (KEPT)
+         ============================================================ -->
+    <div class="menu-category">
+        <h3>🎂 Cakes & Biscuits</h3>
+        <div class="menu-grid">
+            <div class="menu-item-card">
+                <img src="images/chocolate-chip.jpg" alt="Chocolate Chip Biscuits">
+                <h4>Chocolate Chip Biscuits</h4>
+                <p class="price">R9 each</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/oat-biscuits.jpg" alt="Oat and Macadamia Biscuits">
+                <h4>Oat and Macadamia Biscuits</h4>
+                <p class="price">R8 each</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/financiers.jpg" alt="Financiers">
+                <h4>Financiers</h4>
+                <p class="description">French almond tea cakes</p>
+                <p class="price">R10 each</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/brownies.jpg" alt="Chocolate Brownies">
+                <h4>Chocolate Brownies</h4>
+                <p class="price">R11 each</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/meringue.jpg" alt="Meringue">
+                <h4>Meringue</h4>
+                <p class="price">R4 each</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/ginger-cake.jpg" alt="Ginger Cake">
+                <h4>Ginger Cake</h4>
+                <p class="price">R39 per slice</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/almond-cake.jpg" alt="Almond Cake">
+                <h4>Almond Cakes</h4>
+                <p class="description">All variations available</p>
+                <p class="price">R50</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/banana-bread.jpg" alt="Banana Bread">
+                <h4>Banana Bread Slice</h4>
+                <p class="price">R14</p>
+            </div>
+            
+            <div class="menu-item-card">
+                <img src="images/cheesecake.jpg" alt="Cheesecake">
+                <h4>Cheesecake</h4>
+                <p class="description">Classic New York style with berry compote</p>
+                <p class="price">R47</p>
+            </div>
+            
+            <!-- INLINE CSS: Special note for fruit cake -->
+            <div class="menu-item-card" style="border: 2px solid #C68E4A;">
+                <img src="images/fruit-cake.jpg" alt="Fruit Cake">
+                <h4>Fruit Cake</h4>
+                <p class="description">⚠️ Contains alcohol - Traditional festive recipe</p>
+                <p class="price">R44</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- BUTTON to contact for catering and view gallery -->
+    <div style="text-align: center; margin: 2rem 0;">
+        <a href="contact.html" class="btn" style="background-color: #C68E4A; color: white;">📞 Catering Inquiries →</a>
+        <a href="gallery.html" class="btn" style="background-color: #6B3E26; color: white;">📸 View Our Gallery →</a>
+    </div>
 </main>
+
+<!-- ============================================================
+     FOOTER SECTION
+     ============================================================ -->
 <footer>
-    <p>396/398 Esther Roberts Road
-Glenwood, Durban</p>
-    <p>Open 7 days  a week</p>
-     <p>Monday-Friday 6am-3pm</p>
-     <p>Sat, Sunday and public holidays </p>
-    <p>6am-2pm</p>
-    <p>&copy; 2026 Glenwood Bakery</p>
+    <p>396/398 Esther Roberts Road, Glenwood, Durban</p>
+    <p>Open 7 days a week</p>
+    <p>Monday-Friday: 6am - 3pm</p>
+    <p>Saturday, Sunday & Public Holidays: 6am - 2pm</p>
+    <!-- INLINE CSS: Copyright with special styling -->
+    <p style="font-size: 0.8rem; opacity: 0.8;">&copy; 2026 The Glenwood Bakery. All rights reserved. | Designed by ST10537795</p>
 </footer>
 
+<script src="js/script.js"></script>
 </body>
+</html>
