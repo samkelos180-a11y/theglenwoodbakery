@@ -1,0 +1,510 @@
+/* 
+   The Glenwood Bakery - Main Stylesheet
+   Colors: Warm Brown #6B3E26, Cream #FFF5E1, Beige #F3E5AB
+           Caramel #C68E4A, Dark Chocolate #3E2723, Pink #F8C8DC
+   Fonts: Poppins (Headings), Open Sans (Body) */
+
+/* ---------- CSS Reset ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------- Base Styles ---------- */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #FFF5E1;  /* Cream background */
+    color: #3E2723;              /* Dark chocolate text */
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #6B3E26;              /* Warm brown headings */
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    letter-spacing: -0.5px;
+}
+
+h2 {
+    font-size: 2rem;
+    border-bottom: 3px solid #F8C8DC;  /* Pink accent underline */
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: #C68E4A;              /* Caramel subheadings */
+}
+
+a {
+    text-decoration: none;
+    color: #6B3E26;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #C68E4A;
+}
+
+/* ---------- Header & Navigation ---------- */
+header {
+    background-color: #6B3E26;   /* Warm brown header */
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    color: #FFF5E1;              /* Cream text on brown */
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+}
+
+nav {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #FFF5E1;
+    font-weight: 500;
+    padding: 0.5rem 0;
+}
+
+nav a:hover {
+    color: #F8C8DC;              /* Pink on hover */
+    transform: translateY(-2px);
+}
+
+/* ---------- Main Content Container ---------- */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 70vh;
+}
+
+/* ---------- Hero Section (Homepage) ---------- */
+.hero {
+    background: linear-gradient(135deg, #6B3E26 0%, #C68E4A 100%);
+    padding: 4rem 2rem;
+    text-align: center;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    color: #FFF5E1;
+}
+
+.hero h2 {
+    color: #FFF5E1;
+    border-bottom: none;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero .btn {
+    background-color: #F8C8DC;
+    color: #6B3E26;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.hero .btn:hover {
+    background-color: #FFF5E1;
+    transform: scale(1.05);
+}
+
+/* ---------- Category Grid (Homepage Products) ---------- */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.category-card {
+    background-color: #F3E5AB;   /* Soft beige */
+    padding: 1rem;
+    text-align: center;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.category-card img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+}
+
+.category-card p {
+    font-weight: 600;
+    color: #6B3E26;
+}
+
+/* ---------- Menu Grid Layout ---------- */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.menu-item {
+    background-color: #FFF5E1;
+    border: 1px solid #F3E5AB;
+    border-radius: 15px;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.menu-item:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 0.75rem;
+}
+
+.menu-item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.menu-item .price {
+    color: #C68E4A;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* ---------- Gallery Grid ---------- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Gallery Filter Buttons */
+.filter-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background-color: #F3E5AB;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: #6B3E26;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background-color: #6B3E26;
+    color: #FFF5E1;
+}
+
+/* ---------- Contact Form ---------- */
+.contact-form {
+    background-color: #F3E5AB;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #6B3E26;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #FFF5E1;
+    border-radius: 10px;
+    font-family: 'Open Sans', sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #C68E4A;
+}
+
+.btn-submit {
+    background-color: #6B3E26;
+    color: #FFF5E1;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #C68E4A;
+}
+
+/* ---------- Contact Info Cards ---------- */
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.info-card {
+    background-color: #F3E5AB;
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.info-card h3 {
+    margin-bottom: 0.5rem;
+}
+
+/* ---------- Call to Action Section ---------- */
+.cta-section {
+    background-color: #F8C8DC;
+    text-align: center;
+    padding: 3rem;
+    border-radius: 20px;
+    margin: 2rem 0;
+}
+
+.cta-section p {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.cta-section .btn {
+    background-color: #6B3E26;
+    color: #FFF5E1;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    background-color: #3E2723;   /* Dark chocolate */
+    color: #FFF5E1;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN - MEDIA QUERIES
+   ============================================================ */
+
+/* ---------- TABLET BREAKPOINT (max-width: 768px) ---------- */
+@media screen and (max-width: 768px) {
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    main {
+        padding: 1.5rem;
+    }
+    
+    /* Navigation becomes column on tablet */
+    nav {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    /* Hero section adjustments */
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .hero {
+        padding: 2rem 1rem;
+    }
+    
+    /* 2-column grid on tablet */
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ---------- MOBILE BREAKPOINT (max-width: 480px) ---------- */
+@media screen and (max-width: 480px) {
+    
+    header {
+        padding: 1rem;
+        text-align: center;
+    }
+    
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    /* Single column layout on mobile */
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+    
+    .hero .btn, .cta-section .btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .menu-item img {
+        height: 150px;
+    }
+    
+    .gallery-item img {
+        height: 200px;
+    }
+    
+    .filter-buttons {
+        gap: 0.5rem;
+    }
+    
+    .filter-btn {
+        padding: 0.3rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    footer {
+        padding: 1.5rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* ---------- LARGE DESKTOP BREAKPOINT (min-width: 1200px) ---------- */
+@media screen and (min-width: 1200px) {
+    
+    main {
+        max-width: 1400px;
+    }
+    
+    .category-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ---------- Utility Classes ---------- */
+.text-center {
+    text-align: center;
+}
+
+.mt-2 {
+    margin-top: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: 1rem;
+}
+
+/* Active navigation link styling */
+nav a.active {
+    color: #F8C8DC;
+    border-bottom: 2px solid #F8C8DC;
+}
