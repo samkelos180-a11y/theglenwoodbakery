@@ -1,12 +1,133 @@
-  <!DOCTYPE html>
- <body>
-
-<header>
+<!DOCTYPE html>
+<!-- ============================================================
+     FILE: index.html (Homepage)
+     AUTHOR: Samkelo Xaba
+     STUDENT #: ST10537795
+     PURPOSE: Main landing page for The Glenwood Bakery
+     CSS TYPES: External + Internal + Inline
+     CHANGES: Added logo, fixed image paths, added buttons, proper structure
+     ============================================================ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Glenwood Bakery - Artisanal croissants, pastries, cakes, and coffee in Durban">
+    <title>The Glenwood Bakery - Home</title>
     
-    <h1>The Glenwood Bakery</h1>
+    <!-- ======================================================= -->
+    <!-- EXTERNAL CSS: Main stylesheet for all global styling -->
+    <!-- ======================================================= -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- ======================================================= -->
+    <!-- INTERNAL CSS: Page-specific styles for homepage only   -->
+    <!-- ======================================================= -->
+    <style>
+        /* These styles ONLY apply to the homepage */
+        
+        /* Hero section styling */
+        .hero-section {
+            background: linear-gradient(135deg, #6B3E26 0%, #C68E4A 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            color: #FFF5E1;
+        }
+        
+        .hero-section h2 {
+            color: #FFF5E1;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Category row styling */
+        .category-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        
+        .category-item {
+            text-align: center;
+            background-color: #F3E5AB;
+            padding: 1rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .category-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .category-item img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .category-item p {
+            margin-top: 0.5rem;
+            font-weight: bold;
+            color: #6B3E26;
+        }
+        
+        /* Welcome banner */
+        .welcome-banner {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+        }
+        
+        /* CTA section */
+        .cta-section {
+            background-color: #F8C8DC;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .category-row {
+                gap: 1rem;
+            }
+            .category-item img {
+                width: 100px;
+                height: 100px;
+            }
+            .hero-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .category-row {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER SECTION WITH LOGO
+     ============================================================ -->
+<header>
+    <!-- INLINE CSS: Logo container styling -->
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+        <img src="images/logo.png" alt="Glenwood Bakery Logo" style="height: 60px; width: auto; border-radius: 50%; border: 2px solid #F8C8DC;">
+        <h1 style="margin: 0; flex: 1; text-align: center;">The Glenwood Bakery</h1>
+        <div style="width: 60px;"></div>
+    </div>
     
     <nav>
-        <a href="index.html">Home</a>
+        <a href="index.html" class="active">Home</a>
         <a href="about.html">About</a>
         <a href="menu.html">Menu</a>
         <a href="gallery.html">Gallery</a>
@@ -15,59 +136,74 @@
 </header>
 
 <main>
-
-    <!-- Hero Section -->
-    <section>
- <div class="category-row">
+    <!-- ============================================================
+         HERO SECTION with BUTTON
+         ============================================================ -->
+    <div class="hero-section">
         <h2>Freshly Baked Every Day</h2>
-        <a href="menu.html">View Menu</a>
-    </section>
+        <p>Artisanal croissants, pastries, cakes, and coffee made with love</p>
+        <!-- BUTTON ADDED with inline CSS -->
+        <a href="menu.html" class="btn" style="background-color: #FFF5E1; color: #6B3E26; margin-top: 1rem;">🍞 View Our Menu →</a>
+    </div>
 
-      <!-- Welcome message-->
-    <section>
-    <nav>
-        <h2>Welcome to our bakery!</h2>
+    <!-- ============================================================
+         WELCOME MESSAGE SECTION
+         ============================================================ -->
+    <div class="welcome-banner">
+        <h2>Welcome to Our Bakery!</h2>
+        <p>We bring you the finest baked goods using traditional French techniques and quality ingredients.</p>
+        <!-- INLINE CSS: Special offer -->
+        <p style="color: #C68E4A; font-weight: bold; font-size: 1.1rem;">✨ New customers get 10% off your first order! ✨</p>
+    </div>
 
-        <div>
-            <img src="c:\Users\samke\OneDrive\Desktop\WEDE PF\theglenwoodbakery\images\WhatsApp Image 2026-05-29 at 16.09.06.jpeg" width="150">
-            <p>Crossaints</p>
+    <!-- ============================================================
+         PRODUCT CATEGORIES (Fixed image paths)
+         ============================================================ -->
+    <div class="category-row">
+        <div class="category-item">
+            <img src="images/croissant.jpg" alt="Fresh croissants">
+            <p>Croissants</p>
+            <!-- INLINE CSS: Price styling -->
+            <p style="color: #C68E4A; font-weight: bold;">From R14</p>
+            <a href="menu.html" class="btn" style="background-color: #FFF5E1; color: #6B3E26; margin-top: 1rem;">Crossaints →</a>
         </div>
 
-        <div>
-            <img src="images/cake.jpg" width="150">
-            <p>Cake</p>
+        <div class="category-item">
+            <img src="images/cake.jpg" alt="Celebration cakes">
+            <p>Cakes</p>
+            <p style="color: #C68E4A; font-weight: bold;">From R9</p>
+            <a href="menu.html" class="btn" style="background-color: #FFF5E1; color: #6B3E26; margin-top: 1rem;">Cakes→</a>
         </div>
 
-        <div>
-            <img src="c:\Users\samke\OneDrive\Desktop\WEDE PF\theglenwoodbakery\images\WhatsApp Image 2026-05-29 at 16.09.06 (1).jpeg" width="150">
-            <p>Bread</p>
-        </div>
 
-        <div>
-            <img src="c:\Users\samke\OneDrive\Desktop\WEDE PF\theglenwoodbakery\images\WhatsApp Image 2026-05-29 at 16.09.07.jpeg" width="150">
+        <div class="category-item">
+            <img src="images/drinks.jpg" alt="Fresh coffee">
             <p>Drinks</p>
-       </div>
-    
-    </nav>
-    </section>
+            <p style="color: #C68E4A; font-weight: bold;">From R23</p>
+            <a href="menu.html" class="btn" style="background-color: #FFF5E1; color: #6B3E26; margin-top: 1rem;">Drinks →</a>
+        </div>
+    </div>
 
-    <!-- Call to Action -->
-    <section>
-        <p>Visit us today!</p>
-        <a href="contact.html">Contact Us</a>
-        
-    </section>
-</div>
+    <!--CALL TO ACTION SECTION with BUTTON -->
+    <div class="cta-section">
+        <p style="font-size: 1.3rem; font-weight: bold;">Visit us today and taste the difference!</p>
+        <!-- BUTTON with inline CSS -->
+        <a href="contact.html" class="btn" style="background-color: #6B3E26; color: #FFF5E1;">📍 Find Our Location →</a>
+    </div>
 </main>
 
+<!-- ============================================================
+     FOOTER SECTION (Single footer, duplicate removed)
+     ============================================================ -->
 <footer>
-    <p>396/398 Esther Roberts Road
-Glenwood, Durban</p>
-    <p>Open 7 days  a week</p>
-     <p>Monday-Friday 6am-3pm</p>
-     <p>Sat, Sunday and public holidays </p>
-    <p>6am-2pm</p>
-    <p>&copy; 2026 Glenwood Bakery</p>
+    <p>396/398 Esther Roberts Road, Glenwood, Durban</p>
+    <p>Open 7 days a week</p>
+    <p>Monday-Friday: 6am - 3pm</p>
+    <p>Saturday, Sunday & Public Holidays: 6am - 2pm</p>
+    <!-- INLINE CSS: Copyright styling -->
+    <p style="font-size: 0.8rem; opacity: 0.8;">&copy; 2026 The Glenwood Bakery. All rights reserved. | Designed by ST10537795</p>
 </footer>
 
+<script src="js/script.js"></script>
 </body>
+</html>
