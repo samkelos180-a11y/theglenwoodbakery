@@ -1,5 +1,5 @@
 # theglenwoodbakery
-# 🥐 The Glenwood Bakery - Website Development Project
+# The Glenwood Bakery - Website Development Project
 
 ## Student Information
 
@@ -34,15 +34,17 @@ NEW FEATURES ADDED
 | **Internal CSS** | Inside `<style>` tags in each HTML file | Page-specific styles (banners, filters, unique elements) |
 | **Inline CSS** | `style=""` attributes on elements | Element-specific styling (special offers, logos, highlights) |
 
-#### 📱 RESPONSIVE DESIGN
+## RESPONSIVE DESIGN
 
 | Breakpoint | Screen Size | Layout Changes |
-|------------|-------------|----------------|
 | Desktop | > 768px | 4-column grid, horizontal navigation |
 | Tablet | 481px - 768px | 2-column grid, stacked navigation |
 | Mobile | < 480px | 1-column grid, hamburger menu |
-
-<img width="1280" height="1920" alt="_c%3A_Users_samke_OneDrive_Desktop_WEDE%20PF_theglenwoodbakery_index html(Asus Zenbook Fold)" src="https://github.com/user-attachments/assets/53343d64-0334-4361-a5d8-c6a78bb9b2f3" /><img width="1290" height="2796" alt="_c%3A_Users_samke_OneDrive_Desktop_WEDE%20PF_theglenwoodbakery_index html(iPhone 14 Pro Max)" src="https://github.com/user-attachments/assets/4b67b468-2b1e-4f1e-b81d-4f9e79bd2baa" />
+Desktop
+<img width="1280" height="1920" alt="_c%3A_Users_samke_OneDrive_Desktop_WEDE%20PF_theglenwoodbakery_index html(Asus Zenbook Fold)" src="https://github.com/user-attachments/assets/53343d64-0334-4361-a5d8-c6a78bb9b2f3" />
+Mobile
+<img width="1290" height="2796" alt="_c%3A_Users_samke_OneDrive_Desktop_WEDE%20PF_theglenwoodbakery_index html(iPhone 14 Pro Max)" src="https://github.com/user-attachments/assets/4b67b468-2b1e-4f1e-b81d-4f9e79bd2baa" />
+Tablet
 <img width="2048" height="2732" alt="_c%3A_Users_samke_OneDrive_Desktop_WEDE%20PF_theglenwoodbakery_index html(iPad Pro)" src="https://github.com/user-attachments/assets/d6a853f6-e511-4b0b-8559-13829397ebb2" />
 <img width="1536" height="2048" alt="_c%3A_Users_samke_OneDrive_Desktop_WEDE%20PF_theglenwoodbakery_index html(iPad Mini)" src="https://github.com/user-attachments/assets/ac550c6d-184b-440e-a6e5-aa83a9b3649e" />
 
