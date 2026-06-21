@@ -1,48 +1,190 @@
 <!DOCTYPE html>
+<!-- ============================================================
+     FILE: about.html (About Page)
+     AUTHOR: Samkelo Xaba
+     STUDENT #: ST10537795
+     PURPOSE: Tell the story of The Glenwood Bakery
+     ============================================================ -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ===== SEO META TAGS ===== -->
+    <meta name="description" content="Learn about The Glenwood Bakery – a family‑run business in Durban baking homemade biscuits, croissants, and cakes with a personal touch.">
+    <meta name="keywords" content="about bakery, homemade biscuits, family recipe, Durban bakery, Glenwood, fresh baked goods">
     <title>The Glenwood Bakery - About</title>
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* ===== ABOUT PAGE STYLES ===== */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            margin: 2rem 0;
+        }
+        .about-text {
+            flex: 1;
+        }
+        .about-image {
+            flex: 1;
+        }
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        /* Accordion */
+        .accordion-item {
+            border: 2px solid #F3E5AB;
+            border-radius: 10px;
+            margin: 0.5rem 0;
+            overflow: hidden;
+        }
+        .accordion-header {
+            background: #FFF5E1;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: #6B3E26;
+            transition: background 0.3s;
+            display: flex;
+            justify-content: space-between;
+        }
+        .accordion-header:hover {
+            background: #F3E5AB;
+        }
+        .accordion-header .arrow {
+            transition: transform 0.3s;
+        }
+        .accordion-header.active .arrow {
+            transform: rotate(180deg);
+        }
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            padding: 0 1.5rem;
+            background: #FFF5E1;
+        }
+        .accordion-body.open {
+            max-height: 300px;
+            padding: 1rem 1.5rem;
+        }
+        @media screen and (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
 
+<!-- ===== HEADER (consistent with other pages) ===== -->
 <header>
-    <h1>The Glenwood Bakery</h1>
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+        <img src="images/logo.png" alt="Glenwood Bakery Logo" style="height: 60px; width: auto; border-radius: 50%; border: 2px solid #F8C8DC;">
+        <h1 style="margin: 0; flex: 1; text-align: center;">The Glenwood Bakery</h1>
+        <div style="width: 60px;"></div>
+    </div>
     <nav>
         <a href="index.html">Home</a>
         <a href="about.html" class="active">About</a>
         <a href="menu.html">Menu</a>
         <a href="gallery.html">Gallery</a>
         <a href="contact.html">Contact</a>
+        <a href="enquiry.html">Enquiry</a> <!-- new -->
     </nav>
 </header>
 
 <main>
     <section>
         <h2>About Us</h2>
-        <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
-            <div style="flex: 1;">
-                <p>Glenwood Bakery started mainly out of passion, but also because I love the idea of bringing families together with something simple to enjoy, like biscuits they can share and snack on. This recipe actually comes from my great-grandmother, and it's been passed down through generations until it got to me. So it's very personal and homemade.</p>
+        <div class="about-content">
+            <div class="about-text">
+                <p><strong>Glenwood Bakery</strong> started mainly out of passion, but also because I love the idea of bringing families together with something simple to enjoy, like biscuits they can share and snack on. This recipe actually comes from my great‑grandmother, and it's been passed down through generations until it got to me. So it's very personal and homemade.</p>
                 <p>Right now, I run the business on my own from home, and I mainly focus on freshly baked biscuits with delivery around Durban.</p>
                 <p>My goal is to grow the business, reach more customers, and eventually expand into supplying shops, while still keeping that homemade feel. I'd like the brand to feel warm, friendly, and welcoming — something that feels like home.</p>
             </div>
-            <div style="flex: 1;">
-                <img src="images/bakery.jpg" alt="Glenwood Bakery" style="width: 100%; border-radius: 15px;">
+            <div class="about-image">
+                <img src="images/bakery.jpg" alt="The Glenwood Bakery storefront" loading="lazy">
             </div>
+        </div>
+
+        <!-- ===== ACCORDION (Interactive Element) ===== -->
+        <h3 style="margin-top: 2rem;">More About Our Bakery</h3>
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🥖 Our Story</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="accordion-body">
+                    <p>Our journey began in a small kitchen in Glenwood, Durban, where the smell of freshly baked biscuits filled the air. What started as a family tradition has grown into a beloved local bakery. Every recipe is tested and perfected to bring you the taste of home.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🌾 Our Ingredients</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="accordion-body">
+                    <p>We use only the finest ingredients – real butter, free‑range eggs, and locally sourced flour. No preservatives, no artificial flavours. Just honest, wholesome baking.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>❤️ Our Mission</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="accordion-body">
+                    <p>To share the joy of homemade baking with every customer. We believe that good food brings people together, and we strive to make every bite a memory.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== CALL-TO-ACTION BUTTONS ===== -->
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="menu.html" class="btn" style="background-color: #C68E4A; color: white;">🍞 View Our Menu</a>
+            <a href="contact.html" class="btn" style="background-color: #6B3E26; color: white;">📞 Contact Us</a>
+            <a href="index.html" class="btn" style="background-color: #F8C8DC; color: #6B3E26;">🏠 Back to Home</a>
         </div>
     </section>
 </main>
 
+<!-- ===== FOOTER ===== -->
 <footer>
     <p>396/398 Esther Roberts Road, Glenwood, Durban</p>
     <p>Open 7 days a week</p>
     <p>Monday-Friday: 6am - 3pm</p>
     <p>Saturday, Sunday & Public Holidays: 6am - 2pm</p>
-    <p>&copy; 2026 The Glenwood Bakery. All rights reserved.</p>
+    <p style="font-size: 0.8rem; opacity: 0.8;">&copy; 2026 The Glenwood Bakery. All rights reserved. | Designed by ST10537795</p>
 </footer>
 
+<script src="js/script.js"></script>
+
+<!-- ===== ACCORDION SCRIPT ===== -->
+<script>
+    function toggleAccordion(header) {
+        // Toggle active class on header (for arrow rotation)
+        header.classList.toggle('active');
+        const body = header.nextElementSibling;
+        body.classList.toggle('open');
+        // Close other accordions (optional – uncomment if you want only one open at a time)
+        /*
+        const allHeaders = document.querySelectorAll('.accordion-header');
+        allHeaders.forEach(h => {
+            if (h !== header) {
+                h.classList.remove('active');
+                h.nextElementSibling.classList.remove('open');
+            }
+        });
+        */
+    }
+</script>
 </body>
 </html>
