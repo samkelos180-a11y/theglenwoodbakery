@@ -4,31 +4,25 @@
      AUTHOR: Samkelo Xaba
      STUDENT #: ST10537795
      PURPOSE: Display bakery menu - Croissants, Drinks, and Cakes
-     CSS TYPES: External + Internal + Inline
-     SECTIONS INCLUDED: Croissants & Pastries, Drinks, Cakes & Biscuits
-     SECTIONS REMOVED: All Day Breakfast, Lunch from 11am (as requested)
      ============================================================ -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The Glenwood Bakery Menu - Croissants, Pastries, Drinks, and Cakes">
+    <!-- ===== SEO META TAGS ===== -->
+    <meta name="description" content="View our full menu at The Glenwood Bakery – artisanal croissants, cakes, pastries, and freshly brewed coffee in Durban. Daily baked goods.">
+    <meta name="keywords" content="bakery menu, croissants, cakes, coffee, pastries, Durban bakery, Glenwood">
     <title>The Glenwood Bakery - Menu</title>
     
-    <!-- ======================================================= -->
-    <!-- EXTERNAL CSS: Main stylesheet for all global styling -->
-    <!-- ======================================================= -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     
-    <!-- ======================================================= -->
-    <!-- INTERNAL CSS: Menu page specific grid styles -->
-    <!-- ======================================================= -->
     <style>
+        /* ===== MENU PAGE STYLES ===== */
         .menu-category {
             margin: 3rem 0;
         }
-        
         .menu-category h3 {
             background-color: #6B3E26;
             color: #FFF5E1;
@@ -37,13 +31,11 @@
             display: inline-block;
             margin-bottom: 1.5rem;
         }
-        
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.5rem;
         }
-        
         .menu-item-card {
             background-color: #FFF5E1;
             border: 1px solid #F3E5AB;
@@ -51,76 +43,126 @@
             padding: 1rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
         .menu-item-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
-        
         .menu-item-card img {
             width: 100%;
             height: 180px;
             object-fit: cover;
             border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
         }
-        
+        .menu-item-card img:hover {
+            transform: scale(1.02);
+        }
         .menu-item-card h4 {
             margin: 0.5rem 0;
             color: #6B3E26;
         }
-        
         .menu-item-card p {
             margin: 0.3rem 0;
         }
-        
         .price {
             color: #C68E4A;
             font-weight: bold;
             font-size: 1.3rem;
         }
-        
         .description {
             font-size: 0.85rem;
             color: #666;
         }
-        
+        /* Search bar */
+        .search-bar {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        .search-bar input {
+            padding: 0.7rem 2rem;
+            border-radius: 30px;
+            border: 2px solid #C68E4A;
+            width: 60%;
+            max-width: 400px;
+            font-size: 1rem;
+        }
+        .no-results {
+            display: none;
+            text-align: center;
+            font-size: 1.2rem;
+            color: #6B3E26;
+            margin: 2rem 0;
+        }
+        /* Lightbox (same as index) */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 10px;
+        }
+        .lightbox .close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #fff;
+            font-size: 3rem;
+            cursor: pointer;
+        }
         @media screen and (max-width: 768px) {
             .menu-grid {
                 grid-template-columns: 1fr;
+            }
+            .search-bar input {
+                width: 80%;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- ============================================================
-     HEADER SECTION WITH LOGO
-     ============================================================ -->
+<!-- ===== HEADER ===== -->
 <header>
-    <!-- INLINE CSS: Logo container styling -->
     <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
         <img src="images/logo.png" alt="Glenwood Bakery Logo" style="height: 60px; width: auto; border-radius: 50%; border: 2px solid #F8C8DC;">
         <h1 style="margin: 0; flex: 1; text-align: center;">The Glenwood Bakery</h1>
         <div style="width: 60px;"></div>
     </div>
-    
     <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="menu.html" class="active">Menu</a>
         <a href="gallery.html">Gallery</a>
         <a href="contact.html">Contact</a>
+        <a href="enquiry.html">Enquiry</a> <!-- New link -->
     </nav>
 </header>
 
 <main>
     <h2>Our Menu</h2>
-    <!-- INLINE CSS: Menu description -->
     <p style="text-align: center; margin-bottom: 2rem;">Freshly baked daily using traditional French techniques</p>
-    
-    <!-- CATEGORY 1: CROISSANTS  -->
-    <div class="menu-category">
-        <h3> Croissants</h3>
+
+    <!-- ===== SEARCH BAR ===== -->
+    <div class="search-bar">
+        <input type="text" id="menuSearch" placeholder="🔍 Search menu items...">
+    </div>
+    <div class="no-results" id="noResults">No items match your search.</div>
+
+    <!-- ===== CATEGORY 1: CROISSANTS ===== -->
+    <div class="menu-category" data-category="croissants">
+        <h3>🥐 Croissants</h3>
         <div class="menu-grid">
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-05-29 at 14.13.14.jpeg" alt="Butter Croissant">
@@ -128,54 +170,47 @@
                 <p class="description">Classic French butter croissant, flaky and golden</p>
                 <p class="price">R27</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-05-29 at 14.13.14 (1).jpeg" alt="Cheese Croissant">
                 <h4>Cheese Croissant</h4>
                 <p class="description">Stuffed with melted gouda and herbs</p>
                 <p class="price">R36</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-05-29 at 14.13.14 (2).jpeg" alt="Almond Croissant">
                 <h4>Almond Croissant</h4>
                 <p class="description">Filled with almond cream and topped with sliced almonds</p>
                 <p class="price">R34</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-05-29 at 14.13.15 (1).jpeg" alt="Pain au Raisin">
                 <h4>Pain au Raisin</h4>
                 <p class="description">Swirled pastry with raisins and vanilla custard</p>
                 <p class="price">R22</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-05-29 at 14.13.15.jpeg" alt="Pain au Chocolat">
                 <h4>Pain au Chocolat</h4>
                 <p class="description">Dark chocolate filled pastry</p>
                 <p class="price">R32</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-05-29 at 14.13.15 (2).jpeg" alt="Mini Pastry">
                 <h4>Mini Pastry</h4>
                 <p class="description">Assorted mini Danish pastries (apple, cheese, or berry)</p>
                 <p class="price">R17</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-05-29 at 14.13.16.jpeg" alt="Doughnut">
                 <h4>Doughnut</h4>
                 <p class="description">Fresh yeast doughnut with cinnamon sugar glaze</p>
                 <p class="price">R14</p>
             </div>
-            
         </div>
     </div>
-    
-    <!-- CATEGORY 2: DRINKS -->
-    <div class="menu-category">
+
+    <!-- ===== CATEGORY 2: DRINKS ===== -->
+    <div class="menu-category" data-category="drinks">
         <h3>☕ Drinks</h3>
         <div class="menu-grid">
             <div class="menu-item-card">
@@ -183,85 +218,71 @@
                 <h4>Espresso</h4>
                 <p class="price">R23 (Double shot R28)</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-04-28 at 20.03.12 (1).jpeg" alt="Cappuccino">
                 <h4>Cappuccino</h4>
                 <p class="price">R34 (Double shot R39, Large R44)</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-04-28 at 20.03.12.jpeg" alt="Americano">
                 <h4>Americano</h4>
                 <p class="price">R30 (Double shot R32)</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-04-28 at 20.03.14.jpeg" alt="Latte">
                 <h4>Latte</h4>
                 <p class="price">R38</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-04-28 at 20.03.13 (2).jpeg" alt="Cortado">
                 <h4>Cortado</h4>
                 <p class="price">R32 (Double shot R36)</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-04-28 at 20.03.13.jpeg" alt="Macchiato">
                 <h4>Macchiato</h4>
                 <p class="price">R32 (Double shot R36)</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-04-28 at 20.03.13 (1).jpeg" alt="Flat White">
                 <h4>Flat White</h4>
                 <p class="price">R39</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/iced-coffee.jpg" alt="Iced Coffee">
                 <h4>Iced Coffee</h4>
                 <p class="price">R44</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-04-28 at 20.03.14 (3).jpeg" alt="Hot Chocolate">
                 <h4>Hot Chocolate</h4>
                 <p class="price">R48</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-04-28 at 20.03.15 (2).jpeg" alt="Rooibos">
                 <h4>Rooibos</h4>
                 <p class="price">R32 (Large R42)</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-04-28 at 20.03.16.jpeg" alt="Five Roses Tea">
                 <h4>Five Roses Tea</h4>
                 <p class="price">R19</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-04-28 at 20.03.16 (3).jpeg" alt="Orange Juice">
                 <h4>Orange Juice</h4>
                 <p class="price">R44</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-04-28 at 20.03.17.jpeg" alt="Apple Juice">
                 <h4>Apple Juice</h4>
                 <p class="price">R44</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-04-28 at 20.51.36.jpeg" alt="Iced Tea">
                 <h4>Iced Tea</h4>
                 <p class="price">R36</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-04-28 at 20.03.18 (1).jpeg" alt="Milkshake">
                 <h4>Milkshakes</h4>
@@ -270,69 +291,59 @@
             </div>
         </div>
     </div>
-    
-    <!--CATEGORY 3: CAKES-->
-    <div class="menu-category">
-        <h3>Cakes</h3>
+
+    <!-- ===== CATEGORY 3: CAKES ===== -->
+    <div class="menu-category" data-category="cakes">
+        <h3>🎂 Cakes & Biscuits</h3>
         <div class="menu-grid">
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-05-29 at 12.09.04.jpeg" alt="Chocolate Chip Biscuits">
                 <h4>Chocolate Chip Biscuits</h4>
                 <p class="price">R9 each</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-05-29 at 12.09.04 (1).jpeg" alt="Oat and Macadamia Biscuits">
                 <h4>Oat and Macadamia Biscuits</h4>
                 <p class="price">R8 each</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-05-29 at 12.09.04 (2) - Copy.jpeg" alt="Financiers">
                 <h4>Financiers</h4>
                 <p class="description">French almond tea cakes</p>
                 <p class="price">R10 each</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-05-29 at 12.09.05.jpeg" alt="Chocolate Brownies">
                 <h4>Chocolate Brownies</h4>
                 <p class="price">R11 each</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-05-29 at 12.09.05 (1).jpeg" alt="Meringue">
                 <h4>Meringue</h4>
                 <p class="price">R4 each</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-05-29 at 12.09.05 (2).jpeg" alt="Ginger Cake">
                 <h4>Ginger Cake</h4>
                 <p class="price">R39 per slice</p>
             </div>
-            
             <div class="menu-item-card">
-                <img src="images/WhatsApp Image 2026-05-29 at 12.09.06.jpeg" alt="Almond Cake">
+                <img src="images/WhatsApp Image 2026-05-29 at 12.09.06.jpeg" alt="Almond Cakes">
                 <h4>Almond Cakes</h4>
                 <p class="description">All variations available</p>
                 <p class="price">R50</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-05-29 at 12.09.06 (1).jpeg" alt="Banana Bread">
                 <h4>Banana Bread Slice</h4>
                 <p class="price">R14</p>
             </div>
-            
             <div class="menu-item-card">
                 <img src="images/WhatsApp Image 2026-05-29 at 12.09.07.jpeg" alt="Cheesecake">
                 <h4>Cheesecake</h4>
                 <p class="description">Classic New York style with berry compote</p>
                 <p class="price">R47</p>
             </div>
-            
-            <!-- INLINE CSS: Special note for fruit cake -->
             <div class="menu-item-card" style="border: 2px solid #C68E4A;">
                 <img src="images/WhatsApp Image 2026-05-29 at 12.09.06 (2).jpeg" alt="Fruit Cake">
                 <h4>Fruit Cake</h4>
@@ -341,26 +352,94 @@
             </div>
         </div>
     </div>
-    
-    <!-- BUTTON to contact for catering and view gallery -->
+
+    <!-- ===== CALL-TO-ACTION BUTTONS ===== -->
     <div style="text-align: center; margin: 2rem 0;">
         <a href="contact.html" class="btn" style="background-color: #C68E4A; color: white;">📞 Catering Inquiries →</a>
         <a href="gallery.html" class="btn" style="background-color: #6B3E26; color: white;">📸 View Our Gallery →</a>
+        <a href="index.html" class="btn" style="background-color: #F8C8DC; color: #6B3E26;">🏠 Back to Home</a>
     </div>
 </main>
 
-<!-- ============================================================
-     FOOTER SECTION
-     ============================================================ -->
+<!-- ===== FOOTER ===== -->
 <footer>
     <p>396/398 Esther Roberts Road, Glenwood, Durban</p>
     <p>Open 7 days a week</p>
     <p>Monday-Friday: 6am - 3pm</p>
     <p>Saturday, Sunday & Public Holidays: 6am - 2pm</p>
-    <!-- INLINE CSS: Copyright with special styling -->
     <p style="font-size: 0.8rem; opacity: 0.8;">&copy; 2026 The Glenwood Bakery. All rights reserved. | Designed by ST10537795</p>
 </footer>
 
+<!-- ===== LIGHTBOX (hidden) ===== -->
+<div class="lightbox" id="lightbox">
+    <span class="close" id="closeLightbox">&times;</span>
+    <img id="lightboxImg" src="" alt="Expanded view">
+</div>
+
+<!-- ===== SCRIPTS ===== -->
 <script src="js/script.js"></script>
+<script>
+    (function() {
+        // ----- SEARCH/FILTER FUNCTIONALITY -----
+        const searchInput = document.getElementById('menuSearch');
+        const menuCards = document.querySelectorAll('.menu-item-card');
+        const noResults = document.getElementById('noResults');
+        const categorySections = document.querySelectorAll('.menu-category');
+
+        function filterMenu() {
+            const query = searchInput.value.toLowerCase().trim();
+            let anyVisible = false;
+
+            menuCards.forEach(card => {
+                const name = card.querySelector('h4')?.textContent?.toLowerCase() || '';
+                const desc = card.querySelector('.description')?.textContent?.toLowerCase() || '';
+                const price = card.querySelector('.price')?.textContent?.toLowerCase() || '';
+                const combined = name + ' ' + desc + ' ' + price;
+                const matches = query === '' || combined.includes(query);
+                card.style.display = matches ? 'block' : 'none';
+                if (matches) anyVisible = true;
+            });
+
+            // Hide empty categories
+            categorySections.forEach(section => {
+                const grid = section.querySelector('.menu-grid');
+                const visibleCards = grid.querySelectorAll('.menu-item-card[style*="display: block"]');
+                const h3 = section.querySelector('h3');
+                if (visibleCards.length === 0 && query !== '') {
+                    h3.style.display = 'none';
+                } else {
+                    h3.style.display = 'inline-block';
+                }
+            });
+
+            noResults.style.display = (anyVisible || query === '') ? 'none' : 'block';
+        }
+
+        searchInput.addEventListener('input', filterMenu);
+
+        // ----- LIGHTBOX FOR IMAGES -----
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const closeBtn = document.getElementById('closeLightbox');
+
+        document.querySelectorAll('.menu-item-card img').forEach(img => {
+            img.addEventListener('click', function(e) {
+                e.stopPropagation();
+                lightboxImg.src = this.src;
+                lightboxImg.alt = this.alt;
+                lightbox.classList.add('active');
+            });
+        });
+
+        closeBtn.addEventListener('click', function() {
+            lightbox.classList.remove('active');
+        });
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === this) {
+                lightbox.classList.remove('active');
+            }
+        });
+    })();
+</script>
 </body>
 </html>
