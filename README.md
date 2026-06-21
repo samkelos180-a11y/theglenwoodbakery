@@ -85,6 +85,17 @@ Design System
 
 | Poppins | Headings | Google Fonts |
 | Open Sans | Body text | Google Fonts |
+## Changelog
 
+### Part 3 – 2026-06-21
+- **Homepage (`index.html`)**: Added interactive tabs, Leaflet map, lightbox gallery, dynamic product listing with live search.
+- **Menu page (`menu.html`)**: Implemented real‑time search/filter for all menu items; added image lightbox.
+- **Contact page (`contact.html`)**: Created contact form with client‑side validation (name, email, phone, message type, message) and AJAX mailto submission.
+- **Enquiry page (`enquiry.html`)**: Created enquiry form with validation and dynamic cost/availability response based on product and quantity.
+- **SEO**: Added/improved meta descriptions, keywords, and header tags across all pages.
+- **Robots & Sitemap**: Added `robots.txt` and `sitemap.xml` for search engine optimisation.
+- **Internal Linking**: Added links to enquiry page in navigation and cross‑linked content.
+- **Mobile responsiveness**: Ensured all new features work on small screens.
+- **Part 2 feedback fixes**: [List any specific corrections you made, e.g., fixed image paths, updated footer, etc.]
 
 
