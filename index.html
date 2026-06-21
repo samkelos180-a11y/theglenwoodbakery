@@ -4,29 +4,26 @@
      AUTHOR: Samkelo Xaba
      STUDENT #: ST10537795
      PURPOSE: Main landing page for The Glenwood Bakery
-     CSS TYPES: External + Internal + Inline
-     CHANGES: Added logo, fixed image paths, added buttons, proper structure
      ============================================================ -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The Glenwood Bakery - Artisanal croissants, pastries, cakes, and coffee in Durban">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="The Glenwood Bakery - Artisanal croissants, pastries, cakes, and coffee in Durban. Visit us for fresh baked goods daily.">
+    <meta name="keywords" content="bakery, croissants, cakes, coffee, Durban, artisanal bread, pastries">
     <title>The Glenwood Bakery - Home</title>
     
-    <!-- ======================================================= -->
-    <!-- EXTERNAL CSS: Main stylesheet for all global styling -->
-    <!-- ======================================================= -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Leaflet CSS for map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Main stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     
-    <!-- ======================================================= -->
-    <!-- INTERNAL CSS: Page-specific styles for homepage only   -->
-    <!-- ======================================================= -->
     <style>
-        /* These styles ONLY apply to the homepage */
-        
-        /* Hero section styling */
+        /* ===== ADDITIONAL HOMEPAGE STYLES ===== */
+        /* Hero */
         .hero-section {
             background: linear-gradient(135deg, #6B3E26 0%, #C68E4A 100%);
             padding: 4rem 2rem;
@@ -35,14 +32,10 @@
             margin-bottom: 2rem;
             color: #FFF5E1;
         }
-        
         .hero-section h2 {
             color: #FFF5E1;
             font-size: 2.5rem;
-            margin-bottom: 1rem;
         }
-        
-        /* Category row styling */
         .category-row {
             display: flex;
             justify-content: center;
@@ -50,40 +43,33 @@
             flex-wrap: wrap;
             margin: 2rem 0;
         }
-        
         .category-item {
             text-align: center;
             background-color: #F3E5AB;
             padding: 1rem;
             border-radius: 15px;
             transition: transform 0.3s ease;
+            cursor: pointer;
         }
-        
         .category-item:hover {
             transform: translateY(-5px);
         }
-        
         .category-item img {
             width: 150px;
             height: 150px;
             object-fit: cover;
             border-radius: 50%;
         }
-        
         .category-item p {
             margin-top: 0.5rem;
             font-weight: bold;
             color: #6B3E26;
         }
-        
-        /* Welcome banner */
         .welcome-banner {
             text-align: center;
             margin: 2rem 0;
             padding: 1rem;
         }
-        
-        /* CTA section */
         .cta-section {
             background-color: #F8C8DC;
             text-align: center;
@@ -91,119 +77,350 @@
             border-radius: 20px;
             margin: 2rem 0;
         }
-        
-        @media screen and (max-width: 768px) {
-            .category-row {
-                gap: 1rem;
-            }
-            .category-item img {
-                width: 100px;
-                height: 100px;
-            }
-            .hero-section h2 {
-                font-size: 1.8rem;
-            }
+
+        /* Tabs */
+        .tab-container {
+            margin: 2rem 0;
         }
-        
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            background: #F3E5AB;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            color: #6B3E26;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .tab-btn.active {
+            background: #6B3E26;
+            color: #FFF5E1;
+        }
+        .tab-content {
+            display: none;
+            padding: 1.5rem;
+            background: #FFF5E1;
+            border-radius: 15px;
+            margin-top: 1rem;
+            animation: fadeIn 0.5s;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Gallery & Lightbox */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+        }
+        /* Lightbox overlay */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 10px;
+        }
+        .lightbox .close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #fff;
+            font-size: 3rem;
+            cursor: pointer;
+        }
+
+        /* Map */
+        #map {
+            height: 300px;
+            width: 100%;
+            border-radius: 15px;
+            margin: 1rem 0;
+        }
+
+        /* Dynamic products & search */
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        .search-bar input {
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            border: 2px solid #C68E4A;
+            width: 60%;
+            max-width: 400px;
+        }
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .product-card {
+            background: #FFF5E1;
+            padding: 1rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .product-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease;
+        }
+
+        @media screen and (max-width: 768px) {
+            .hero-section h2 { font-size: 1.8rem; }
+            .category-item img { width: 100px; height: 100px; }
+            .search-bar input { width: 80%; }
+        }
         @media screen and (max-width: 480px) {
-            .category-row {
-                flex-direction: column;
-                align-items: center;
-            }
+            .category-row { flex-direction: column; align-items: center; }
+            .tab-buttons { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
 <body>
 
-<!-- ============================================================
-     HEADER SECTION WITH LOGO
-     ============================================================ -->
 <header>
-    <!-- INLINE CSS: Logo container styling -->
     <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
         <img src="images/logo.png" alt="Glenwood Bakery Logo" style="height: 60px; width: auto; border-radius: 50%; border: 2px solid #F8C8DC;">
         <h1 style="margin: 0; flex: 1; text-align: center;">The Glenwood Bakery</h1>
         <div style="width: 60px;"></div>
     </div>
-    
     <nav>
         <a href="index.html" class="active">Home</a>
         <a href="about.html">About</a>
         <a href="menu.html">Menu</a>
         <a href="gallery.html">Gallery</a>
         <a href="contact.html">Contact</a>
+        <a href="enquiry.html">Enquiry</a> <!-- new -->
     </nav>
 </header>
 
 <main>
-    <!-- ============================================================
-         HERO SECTION with BUTTON
-         ============================================================ -->
-    <div class="hero-section">
+    <!-- ======= HERO ======= -->
+    <div class="hero-section fade-in">
         <h2>Freshly Baked Every Day</h2>
         <p>Artisanal croissants, pastries, cakes, and coffee made with love</p>
-        <!-- BUTTON ADDED with inline CSS -->
         <a href="menu.html" class="btn" style="background-color: #FFF5E1; color: #6B3E26; margin-top: 1rem;">🍞 View Our Menu →</a>
     </div>
 
-    <!-- ============================================================
-         WELCOME MESSAGE SECTION
-         ============================================================ -->
-    <div class="welcome-banner">
+    <!-- ======= WELCOME ======= -->
+    <div class="welcome-banner fade-in">
         <h2>Welcome to Our Bakery!</h2>
         <p>We bring you the finest baked goods using traditional French techniques and quality ingredients.</p>
-        <!-- INLINE CSS: Special offer -->
         <p style="color: #C68E4A; font-weight: bold; font-size: 1.1rem;">✨ New customers get 10% off your first order! ✨</p>
     </div>
 
-    <!-- ============================================================
-         PRODUCT CATEGORIES (Fixed image paths)
-         ============================================================ -->
-    <div class="category-row">
-        <div class="category-item">
-            <img src="images/croissant.jpg" alt="Fresh croissants">
-            <p>Croissants</p>
-            <!-- INLINE CSS: Price styling -->
-            <p style="color: #C68E4A; font-weight: bold;">From R14</p>
-            <a href="menu.html" class="btn" style="background-color: #FFF5E1; color: #6B3E26; margin-top: 1rem;">Crossaints →</a>
+    <!-- ======= CATEGORIES (with tabs) ======= -->
+    <section class="tab-container fade-in">
+        <h3 style="text-align: center;">Our Specialties</h3>
+        <div class="tab-buttons">
+            <button class="tab-btn active" data-tab="tab1">🥐 Croissants</button>
+            <button class="tab-btn" data-tab="tab2">🎂 Cakes</button>
+            <button class="tab-btn" data-tab="tab3">☕ Drinks</button>
         </div>
-
-        <div class="category-item">
-            <img src="images/cake.jpg" alt="Celebration cakes">
-            <p>Cakes</p>
-            <p style="color: #C68E4A; font-weight: bold;">From R9</p>
-            <a href="menu.html" class="btn" style="background-color: #FFF5E1; color: #6B3E26; margin-top: 1rem;">Cakes→</a>
+        <div id="tab1" class="tab-content active">
+            <p>Flaky, buttery croissants baked fresh every morning. Choose from plain, almond, or chocolate.</p>
+            <img src="images/croissant.jpg" alt="Croissants" style="width:100%; max-width:300px; border-radius:10px;">
         </div>
-
-
-        <div class="category-item">
-            <img src="images/drinks.jpg" alt="Fresh coffee">
-            <p>Drinks</p>
-            <p style="color: #C68E4A; font-weight: bold;">From R23</p>
-            <a href="menu.html" class="btn" style="background-color: #FFF5E1; color: #6B3E26; margin-top: 1rem;">Drinks →</a>
+        <div id="tab2" class="tab-content">
+            <p>Celebration cakes for every occasion – birthday, wedding, or just because. Custom orders available.</p>
+            <img src="images/cake.jpg" alt="Cakes" style="width:100%; max-width:300px; border-radius:10px;">
         </div>
-    </div>
+        <div id="tab3" class="tab-content">
+            <p>Artisanal coffee, fresh juices, and smoothies to complement your pastry.</p>
+            <img src="images/drinks.jpg" alt="Drinks" style="width:100%; max-width:300px; border-radius:10px;">
+        </div>
+    </section>
 
-    <!--CALL TO ACTION SECTION with BUTTON -->
-    <div class="cta-section">
+    <!-- ======= GALLERY WITH LIGHTBOX ======= -->
+    <section class="fade-in">
+        <h3 style="text-align: center;">Bakery Moments</h3>
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- images will be loaded by JS, but you can also hardcode some -->
+        </div>
+    </section>
+
+    <!-- ======= INTERACTIVE MAP ======= -->
+    <section class="fade-in">
+        <h3 style="text-align: center;">Find Us</h3>
+        <div id="map"></div>
+        <p style="text-align:center;">396/398 Esther Roberts Road, Glenwood, Durban</p>
+    </section>
+
+    <!-- ======= DYNAMIC PRODUCTS + SEARCH ======= -->
+    <section class="fade-in">
+        <h3 style="text-align: center;">Our Menu</h3>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="🔍 Search products...">
+        </div>
+        <div class="product-list" id="productList"></div>
+    </section>
+
+    <!-- ======= CTA ======= -->
+    <div class="cta-section fade-in">
         <p style="font-size: 1.3rem; font-weight: bold;">Visit us today and taste the difference!</p>
-        <!-- BUTTON with inline CSS -->
-        <a href="contact.html" class="btn" style="background-color: #6B3E26; color: #FFF5E1;">📍 Find Our Location →</a>
+        <a href="contact.html" class="btn" style="background-color: #6B3E26; color: #FFF5E1;">📍 Contact Us →</a>
     </div>
 </main>
 
-<!-- ============================================================
-     FOOTER SECTION (Single footer, duplicate removed)
-     ============================================================ -->
 <footer>
     <p>396/398 Esther Roberts Road, Glenwood, Durban</p>
     <p>Open 7 days a week</p>
     <p>Monday-Friday: 6am - 3pm</p>
     <p>Saturday, Sunday & Public Holidays: 6am - 2pm</p>
-    <!-- INLINE CSS: Copyright styling -->
     <p style="font-size: 0.8rem; opacity: 0.8;">&copy; 2026 The Glenwood Bakery. All rights reserved. | Designed by ST10537795</p>
 </footer>
 
+<!-- Lightbox (hidden initially) -->
+<div class="lightbox" id="lightbox">
+    <span class="close" id="closeLightbox">&times;</span>
+    <img id="lightboxImg" src="" alt="Expanded view">
+</div>
+
+<!-- ============================================================ -->
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- Main Script -->
 <script src="js/script.js"></script>
+<!-- Additional inline script for this page -->
+<script>
+    (function() {
+        // ----- TABS -----
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const target = this.dataset.tab;
+                tabContents.forEach(c => c.classList.remove('active'));
+                document.getElementById(target).classList.add('active');
+            });
+        });
+
+        // ----- LIGHTBOX GALLERY -----
+        const galleryImages = [
+            { src: 'images/croissant.jpg', alt: 'Fresh croissants' },
+            { src: 'images/cake.jpg', alt: 'Celebration cake' },
+            { src: 'images/drinks.jpg', alt: 'Coffee and drinks' },
+            // Add more images as you have
+        ];
+        const galleryGrid = document.getElementById('galleryGrid');
+        galleryImages.forEach(imgData => {
+            const img = document.createElement('img');
+            img.src = imgData.src;
+            img.alt = imgData.alt;
+            img.loading = 'lazy';
+            img.addEventListener('click', function() {
+                document.getElementById('lightboxImg').src = this.src;
+                document.getElementById('lightbox').classList.add('active');
+            });
+            galleryGrid.appendChild(img);
+        });
+
+        document.getElementById('closeLightbox').addEventListener('click', function() {
+            document.getElementById('lightbox').classList.remove('active');
+        });
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) this.classList.remove('active');
+        });
+
+        // ----- MAP (Leaflet) -----
+        const map = L.map('map').setView([-29.8587, 30.9953], 15); // Glenwood, Durban coordinates
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+        L.marker([-29.8587, 30.9953]).addTo(map)
+            .bindPopup('The Glenwood Bakery<br>396 Esther Roberts Road')
+            .openPopup();
+
+        // ----- DYNAMIC PRODUCTS & SEARCH -----
+        const products = [
+            { name: 'Butter Croissant', price: 'R14', img: 'images/croissant.jpg' },
+            { name: 'Almond Croissant', price: 'R18', img: 'images/croissant.jpg' },
+            { name: 'Chocolate Croissant', price: 'R16', img: 'images/croissant.jpg' },
+            { name: 'Vanilla Slice', price: 'R12', img: 'images/cake.jpg' },
+            { name: 'Red Velvet Cake', price: 'R25', img: 'images/cake.jpg' },
+            { name: 'Caramel Latte', price: 'R23', img: 'images/drinks.jpg' },
+            { name: 'Fresh Orange Juice', price: 'R20', img: 'images/drinks.jpg' },
+        ];
+
+        const productList = document.getElementById('productList');
+        const searchInput = document.getElementById('searchInput');
+
+        function renderProducts(filter = '') {
+            const filtered = products.filter(p => 
+                p.name.toLowerCase().includes(filter.toLowerCase())
+            );
+            productList.innerHTML = '';
+            if (filtered.length === 0) {
+                productList.innerHTML = '<p style="text-align:center; grid-column:1/-1;">No products found.</p>';
+                return;
+            }
+            filtered.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${p.img}" alt="${p.name}" loading="lazy">
+                    <h4>${p.name}</h4>
+                    <p style="color:#C68E4A; font-weight:bold;">${p.price}</p>
+                `;
+                productList.appendChild(card);
+            });
+        }
+
+        renderProducts();
+        searchInput.addEventListener('input', function() {
+            renderProducts(this.value);
+        });
+
+    })();
+</script>
 </body>
 </html>
