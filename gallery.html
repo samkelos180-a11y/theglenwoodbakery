@@ -4,26 +4,22 @@
      AUTHOR: Samkelo Xaba
      STUDENT #: ST10537795
      PURPOSE: Visual showcase of bakery products and store
-     CSS TYPES: External + Internal + Inline
-     CHANGES: Added gallery grid with filter buttons and responsive layout
      ============================================================ -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Glenwood Bakery Gallery - Photos of our breads, pastries, cakes, and store">
+    <!-- ===== SEO META TAGS ===== -->
+    <meta name="description" content="Explore our bakery gallery – fresh croissants, cakes, pastries, and coffee at The Glenwood Bakery in Durban. See our store and products.">
+    <meta name="keywords" content="bakery gallery, croissants, cakes, coffee, pastries, Durban bakery, Glenwood, store photos">
     <title>The Glenwood Bakery - Gallery</title>
     
-    <!-- ======================================================= -->
-    <!-- EXTERNAL CSS: Main stylesheet for all global styling -->
-    <!-- ======================================================= -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     
-    <!-- ======================================================= -->
-    <!-- INTERNAL CSS: Gallery page specific styles -->
-    <!-- ======================================================= -->
     <style>
+        /* ===== GALLERY PAGE STYLES ===== */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -36,6 +32,7 @@
             border-radius: 15px;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 0.6s ease;
         }
         
         .gallery-item:hover {
@@ -79,7 +76,7 @@
             color: #FFF5E1;
         }
         
-        /* Lightbox overlay for image popup */
+        /* Lightbox overlay */
         .lightbox {
             display: none;
             position: fixed;
@@ -112,11 +109,15 @@
             cursor: pointer;
         }
         
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
         @media screen and (max-width: 768px) {
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
             .gallery-item img {
                 height: 200px;
             }
@@ -126,11 +127,9 @@
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
-            
             .gallery-item img {
                 height: 220px;
             }
-            
             .filter-btn {
                 padding: 0.3rem 1rem;
                 font-size: 0.8rem;
@@ -140,30 +139,26 @@
 </head>
 <body>
 
-<!-- ============================================================
-     HEADER SECTION WITH LOGO
-     ============================================================ -->
+<!-- ===== HEADER ===== -->
 <header>
-    <!-- INLINE CSS: Logo container styling -->
     <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
         <img src="images/logo.png" alt="Glenwood Bakery Logo" style="height: 60px; width: auto; border-radius: 50%; border: 2px solid #F8C8DC;">
         <h1 style="margin: 0; flex: 1; text-align: center;">The Glenwood Bakery</h1>
         <div style="width: 60px;"></div>
     </div>
-    
     <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="menu.html">Menu</a>
         <a href="gallery.html" class="active">Gallery</a>
         <a href="contact.html">Contact</a>
+        <a href="enquiry.html">Enquiry</a> <!-- New link -->
     </nav>
 </header>
 
 <main>
     <h2>Our Gallery</h2>
-    <!-- INLINE CSS: Gallery description -->
-    <p style="text-align: center; margin-bottom: 1rem;">A visual taste of what we offer - from our kitchen to your table</p>
+    <p style="text-align: center; margin-bottom: 1rem;">A visual taste of what we offer – from our kitchen to your table</p>
     
     <!-- FILTER BUTTONS -->
     <div class="filter-buttons">
@@ -177,24 +172,20 @@
     
     <!-- GALLERY GRID -->
     <div class="gallery-grid" id="galleryGrid">
-    
-        
-        <!-- Crossaints-->
+        <!-- Pastries -->
         <div class="gallery-item pastry">
             <img src="images/WhatsApp Image 2026-05-29 at 14.13.14.jpeg" alt="Butter croissant">
         </div>
         <div class="gallery-item pastry">
             <img src="images/WhatsApp Image 2026-05-29 at 14.13.15.jpeg" alt="Pain au chocolat">
         </div>
-        
         <!-- Cakes -->
         <div class="gallery-item cake">
-            <img src=images/WhatsApp Image 2026-05-29 at 12.09.05.jpeg" alt="Chocolate cake">
+            <img src="images/WhatsApp Image 2026-05-29 at 12.09.05.jpeg" alt="Chocolate cake">
         </div>
         <div class="gallery-item cake">
             <img src="images/WhatsApp Image 2026-05-29 at 12.09.07.jpeg" alt="Cheesecake">
         </div>
-        
         <!-- Drinks -->
         <div class="gallery-item drink">
             <img src="images/WhatsApp Image 2026-04-28 at 20.03.12 (3).jpeg" alt="Latte art coffee">
@@ -202,67 +193,89 @@
         <div class="gallery-item drink">
             <img src="images/WhatsApp Image 2026-04-28 at 20.51.36.jpeg" alt="Iced coffee">
         </div>
-        
+        <!-- You can add more gallery items here -->
+    </div>
     
-    <!-- INLINE CSS: Social media message -->
+    <!-- SOCIAL MEDIA PROMO -->
     <div style="background-color: #F3E5AB; padding: 1.5rem; border-radius: 15px; text-align: center; margin: 2rem 0;">
         <p style="margin-bottom: 0; font-size: 1.1rem;">📸 Follow us on Instagram <strong style="color: #6B3E26;">@glenwoodbakery</strong> for daily fresh bakes!</p>
         <p style="margin-top: 0.5rem; font-size: 0.9rem;">Tag us in your photos for a chance to be featured</p>
     </div>
     
-    <!-- BUTTON to visit us -->
+    <!-- CALL-TO-ACTION BUTTONS -->
     <div style="text-align: center; margin-bottom: 1rem;">
         <a href="contact.html" class="btn" style="background-color: #6B3E26; color: white;">📍 Visit Our Bakery</a>
         <a href="menu.html" class="btn" style="background-color: #C68E4A; color: white;">🍞 View Our Menu</a>
+        <a href="index.html" class="btn" style="background-color: #F8C8DC; color: #6B3E26;">🏠 Back to Home</a>
     </div>
 </main>
 
-<!-- LIGHTBOX FOR IMAGE POPUP -->
+<!-- LIGHTBOX -->
 <div id="lightbox" class="lightbox" onclick="closeLightbox()">
     <span class="close-lightbox">&times;</span>
     <img id="lightbox-img" src="" alt="Enlarged view">
 </div>
 
-<!-- ============================================================
-     FOOTER SECTION
-     ============================================================ -->
+<!-- ===== FOOTER ===== -->
 <footer>
     <p>396/398 Esther Roberts Road, Glenwood, Durban</p>
     <p>Open 7 days a week</p>
     <p>Monday-Friday: 6am - 3pm</p>
     <p>Saturday, Sunday & Public Holidays: 6am - 2pm</p>
-    <!-- INLINE CSS: Copyright with special styling -->
     <p style="font-size: 0.8rem; opacity: 0.8;">&copy; 2026 The Glenwood Bakery. All rights reserved. | Designed by ST10537795</p>
 </footer>
 
 <script src="js/script.js"></script>
 
-<!-- Additional script for gallery lightbox -->
+<!-- ===== GALLERY SCRIPTS ===== -->
 <script>
-    // Lightbox functionality for gallery images
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    
-    galleryItems.forEach(item => {
-        item.addEventListener('click', function() {
-            const img = this.querySelector('img');
-            lightboxImg.src = img.src;
-            lightbox.style.display = 'block';
-        });
-    });
-    
-    function closeLightbox() {
-        lightbox.style.display = 'none';
-    }
-    
-    // Close lightbox with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && lightbox.style.display === 'block') {
-            closeLightbox();
-        }
-    });
-</script>
+    (function() {
+        // ----- FILTER FUNCTIONALITY -----
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
 
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const filter = this.dataset.filter;
+
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // ----- LIGHTBOX -----
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                lightboxImg.src = img.src;
+                lightbox.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // prevent scroll
+            });
+        });
+
+        window.closeLightbox = function() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.style.display === 'block') {
+                closeLightbox();
+            }
+        });
+    })();
+</script>
 </body>
 </html>
