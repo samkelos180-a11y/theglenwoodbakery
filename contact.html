@@ -3,20 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO -->
+    <meta name="description" content="Get in touch with The Glenwood Bakery. Send us a message about our products, events, or general enquiries.">
+    <meta name="keywords" content="contact bakery, Glenwood Bakery, Durban bakery, enquiry">
     <title>The Glenwood Bakery - Contact</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #FFF5E1;
+            border-radius: 20px;
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            color: #6B3E26;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 0.7rem;
+            border-radius: 10px;
+            border: 2px solid #C68E4A;
+            font-size: 1rem;
+        }
+        textarea {
+            min-height: 120px;
+        }
+        .error {
+            color: #d9534f;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+        .success {
+            color: #5cb85c;
+            font-weight: bold;
+        }
+        .btn-submit {
+            background: #6B3E26;
+            color: #FFF5E1;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+        .btn-submit:hover {
+            background: #C68E4A;
+        }
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .info-card {
+            background: #FFF5E1;
+            padding: 1rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
 <header>
-    <h1>The Glenwood Bakery</h1>
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+        <img src="images/logo.png" alt="Glenwood Bakery Logo" style="height: 60px; width: auto; border-radius: 50%; border: 2px solid #F8C8DC;">
+        <h1 style="margin: 0; flex: 1; text-align: center;">The Glenwood Bakery</h1>
+        <div style="width: 60px;"></div>
+    </div>
     <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="menu.html">Menu</a>
         <a href="gallery.html">Gallery</a>
         <a href="contact.html" class="active">Contact</a>
+        <a href="enquiry.html">Enquiry</a>
     </nav>
 </header>
 
@@ -44,24 +112,44 @@
     </div>
 
     <!-- Contact Form -->
-    <form class="contact-form" id="contactForm">
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-
-        <div class="form-group">
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-        </div>
-
-        <button type="submit" class="btn-submit">Send Message</button>
-    </form>
+    <div class="form-container">
+        <h3>Send us a message</h3>
+        <form id="contactForm" novalidate>
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" required minlength="2" placeholder="Your name">
+                <div class="error" id="nameError"></div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" required placeholder="you@example.com">
+                <div class="error" id="emailError"></div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="+27 82 123 4567">
+                <div class="error" id="phoneError"></div>
+            </div>
+            <div class="form-group">
+                <label for="msgType">Message Type *</label>
+                <select id="msgType" required>
+                    <option value="">-- Select --</option>
+                    <option value="General">General Enquiry</option>
+                    <option value="Order">Order Question</option>
+                    <option value="Feedback">Feedback</option>
+                    <option value="Other">Other</option>
+                </select>
+                <div class="error" id="msgTypeError"></div>
+            </div>
+            <div class="form-group">
+                <label for="message">Your Message *</label>
+                <textarea id="message" required minlength="10" placeholder="Write your message here..."></textarea>
+                <div class="error" id="messageError"></div>
+            </div>
+            <button type="submit" class="btn-submit">Send Message</button>
+            <div id="formStatus" class="success" style="margin-top:1rem;"></div>
+        </form>
+    </div>
 </main>
 
 <footer>
@@ -69,9 +157,66 @@
     <p>Open 7 days a week</p>
     <p>Monday-Friday: 6am - 3pm</p>
     <p>Saturday, Sunday & Public Holidays: 6am - 2pm</p>
-    <p>&copy; 2026 The Glenwood Bakery. All rights reserved.</p>
+    <p style="font-size: 0.8rem; opacity: 0.8;">&copy; 2026 The Glenwood Bakery. All rights reserved. | Designed by ST10537795</p>
 </footer>
 
 <script src="js/script.js"></script>
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Clear previous errors
+        document.querySelectorAll('.error').forEach(el => el.textContent = '');
+        document.getElementById('formStatus').textContent = '';
+
+        // Get values
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const msgType = document.getElementById('msgType').value;
+        const message = document.getElementById('message').value.trim();
+
+        let isValid = true;
+
+        // Validate name
+        if (name.length < 2) {
+            document.getElementById('nameError').textContent = 'Name must be at least 2 characters.';
+            isValid = false;
+        }
+        // Validate email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+            isValid = false;
+        }
+        // Validate phone (optional but if filled, must be valid SA format)
+        if (phone.length > 0) {
+            const phonePattern = /^(\+27|0)[6-8][0-9]{8}$/;
+            if (!phonePattern.test(phone.replace(/\s/g, ''))) {
+                document.getElementById('phoneError').textContent = 'Enter a valid SA phone number (e.g. 0821234567).';
+                isValid = false;
+            }
+        }
+        // Validate message type
+        if (!msgType) {
+            document.getElementById('msgTypeError').textContent = 'Please select a message type.';
+            isValid = false;
+        }
+        // Validate message
+        if (message.length < 10) {
+            document.getElementById('messageError').textContent = 'Message must be at least 10 characters.';
+            isValid = false;
+        }
+
+        if (!isValid) return;
+
+        // If valid, simulate AJAX submission (send email via mailto)
+        const subject = encodeURIComponent(`Contact from ${name} - ${msgType}`);
+        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage Type: ${msgType}\n\nMessage:\n${message}`);
+        window.location.href = `mailto:info@glenwoodbakery.co.za?subject=${subject}&body=${body}`;
+        document.getElementById('formStatus').textContent = '✅ Your message has been sent (check your email client).';
+        // Optionally reset form
+        // this.reset();
+    });
+</script>
 </body>
 </html>
